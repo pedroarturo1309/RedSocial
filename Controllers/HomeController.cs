@@ -10,6 +10,7 @@ namespace RedSocial.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Loquesea = "ASKDALSKDASd";
             return View();
         }
 
