@@ -1,0 +1,35 @@
+﻿@model RedSocial.Models.publicaciones
+@{
+    ViewBag.Title = "Publicaciones";
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap-wysiwyg.js"></script>
+
+
+<form method="post" action="@Url.Action("Publicaciones", "publicaciones")"><textarea id="editor" name="Descripcion"></textarea>
+    <div class="footer text-center">
+        <button type="submit" class="btn btn-simple btn-primary btn-lg">Publicar</button>
+    </div>
+    </form>
+
+@if (ViewBag.guardado == true)
+{
+    <script>
+            alert("Se ha guardado correctamente")
+    </script>
+}
+else if (ViewBag.guardado == false)
+{
+    <script>
+            alert("No se ha guardado")
+    </script>
+}
+
+<script>
+
+  $(document).ready(function () {
+      $('#editor').wysiwyg();
+  });
+
+</script>

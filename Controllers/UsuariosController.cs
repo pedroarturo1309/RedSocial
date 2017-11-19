@@ -1,9 +1,11 @@
 ﻿using RedSocial.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace RedSocial.Controllers
 {
@@ -12,6 +14,7 @@ namespace RedSocial.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
+            ViewBag.guardado = "";
             return View();
         }
 
@@ -24,14 +27,24 @@ namespace RedSocial.Controllers
         [HttpPost]
         public ActionResult CrearUsuario(Usuario usuario)
         {
-            if (usuario != null)
+            try
             {
-                using (var db = new RedSocialDB())
+                if (usuario != null)
                 {
-                    db.Usuario.Add(usuario);
+                    using (var db = new RedSocialDB())
+                    {
+                        db.Usuario.Add(usuario);
+                        db.SaveChanges();
+                    }
                 }
+                ViewBag.guardado = true;
+                return View(usuario);
             }
-            return View();
+            catch(Exception e)
+            {
+                ViewBag.guardado = false;
+                return View(usuario);
+            }
         }
     }
 }

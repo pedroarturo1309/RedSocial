@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RedSocial.Models.publicaciones>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.idPubli }) |
+                @Html.ActionLink("Details", "Details", new { id=item.idPubli }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.idPubli })
+            </td>
+        </tr>
+    }
+    
+    </table>
