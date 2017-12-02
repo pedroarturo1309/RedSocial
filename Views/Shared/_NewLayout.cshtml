@@ -21,6 +21,20 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="~/Content/assets/css/demo.css" rel="stylesheet" />
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBZASaiC7ellLEqJMZTkxkMzPyCVDCFqQI",
+            authDomain: "redsocial-27a84.firebaseapp.com",
+            databaseURL: "https://redsocial-27a84.firebaseio.com",
+            projectId: "redsocial-27a84",
+            storageBucket: "redsocial-27a84.appspot.com",
+            messagingSenderId: "126127912261"
+        };
+        firebase.initializeApp(config);
+    </script>
 </head>
 
 <body class="tutorial-page">
@@ -147,6 +161,7 @@
     });
 
     </script>
+
     @RenderSection("scripts", required: false)
 
 </body>
