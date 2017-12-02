@@ -1,35 +1,49 @@
-﻿@model RedSocial.Models.publicaciones
-@{
+﻿@{
     ViewBag.Title = "Publicaciones";
+    Layout = null;
 }
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/bootstrap-wysiwyg.js"></script>
+<link href="~/Content/dist/summernote.css" rel="stylesheet" />
+<script src="~/Content/dist/summernote.js"></script>
 
+<form method="post" id="form1" action="@Url.Action("Publicaciones", "publicaciones")">
+    <textarea hidden="hidden" id="editor" name="Descripcion"></textarea>
 
-<form method="post" action="@Url.Action("Publicaciones", "publicaciones")"><textarea id="editor" name="Descripcion"></textarea>
+    <div id="summernote"><p>Hello Summernote</p></div>
+
     <div class="footer text-center">
-        <button type="submit" class="btn btn-simple btn-primary btn-lg">Publicar</button>
+        <button type="button" id="publicar" class="btn btn-simple btn-primary btn-lg">Publicar</button>
     </div>
-    </form>
+</form>
+
+
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
+        });
+    });
+
+    $("#publicar").click(function () {
+
+        var contenido = $(".note-editable").html();
+        $("#editor").val(contenido);    
+        $("#form1").submit();
+    })
+</script>
 
 @if (ViewBag.guardado == true)
 {
     <script>
-            alert("Se ha guardado correctamente")
+        alert("Se ha guardado correctamente")
     </script>
 }
 else if (ViewBag.guardado == false)
 {
     <script>
-            alert("No se ha guardado")
+        alert("No se ha guardado")
     </script>
 }
-
-<script>
-
-  $(document).ready(function () {
-      $('#editor').wysiwyg();
-  });
-
-</script>

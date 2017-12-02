@@ -15,6 +15,8 @@
         public virtual DbSet<Amigos> Amigos { get; set; }
         public virtual DbSet<publicaciones> publicaciones { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Roles.RedSocial_Roles> RedSocial_Roles { get; set; }
+        public virtual DbSet<Roles.RedSocial_RolesUsuarios> RedSocial_RolesUsuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

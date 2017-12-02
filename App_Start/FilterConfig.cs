@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using RedSocial.Code;
+using System.Web;
 using System.Web.Mvc;
 
 namespace RedSocial
@@ -8,6 +9,7 @@ namespace RedSocial
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new CustomAuthorize());
         }
     }
 }

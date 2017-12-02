@@ -1,6 +1,7 @@
 ﻿using RedSocial.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
@@ -15,8 +16,7 @@ namespace RedSocial.Controllers
             using (var db = new RedSocialDB())
             {
                 var publicaciones = (from a in db.publicaciones
-                                     select a).ToList();
-
+                                     select a).Include(a=>a.Usuario).ToList();
 
                 return View(publicaciones);     
             }
@@ -28,7 +28,7 @@ namespace RedSocial.Controllers
             return View();
         }
         
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Publicaciones(publicaciones Publicaciones)
         {
             try
@@ -37,17 +37,19 @@ namespace RedSocial.Controllers
                 {
                     using (var db = new RedSocialDB())
                     {
+                        Publicaciones.Descripcion = HttpUtility.HtmlEncode(Publicaciones.Descripcion);
+                        Publicaciones.idUsuario = int.Parse(Session["UsuarioID"].ToString());
                         db.publicaciones.Add(Publicaciones);
                         db.SaveChanges();
                     }
                 }
                 ViewBag.guardado = true;
-                return View();
+                return View("Index");
             }
             catch (Exception e)
             {
                 ViewBag.guardado = false;
-                return View();
+                return View("index");
             }
         }
     }

@@ -33,7 +33,20 @@ namespace RedSocial.Controllers
                 {
                     using (var db = new RedSocialDB())
                     {
+                        usuario.Contraseña = Code.UtilityMethods.SetSHA1(usuario.Contraseña);
                         db.Usuario.Add(usuario);
+
+                        var rolID = db.RedSocial_Roles.Where(a => a.Nombre.ToLower() == "general").FirstOrDefault().ID;
+
+                        var Rol = new Models.Roles.RedSocial_RolesUsuarios
+                        {
+                            Estado = true,
+                            UsuarioID = usuario.idUsuario,
+                            RolID = rolID
+                        };
+
+                        db.RedSocial_RolesUsuarios.Add(Rol);
+
                         db.SaveChanges();
                     }
                 }
