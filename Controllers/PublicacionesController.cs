@@ -17,7 +17,8 @@ namespace RedSocial.Controllers
                 var publicaciones = (from a in db.publicaciones
                                      select a).ToList();
 
-                return View(publicaciones);
+
+                return View(publicaciones);     
             }
                 
         }

@@ -1,0 +1,172 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD4lv3vl8Gfyf17gUyHDLqWUGxtnLtR4OE",
+    authDomain: "gregory-20153222.firebaseapp.com",
+    databaseURL: "https://gregory-20153222.firebaseio.com",
+    projectId: "gregory-20153222",
+    storageBucket: "gregory-20153222.appspot.com",
+    messagingSenderId: "1070084511121"
+  };
+  firebase.initializeApp(config);
+    </script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <style>
+        #div1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  #div2{
+    background-color: #fff;
+    color: white;
+    box-shadow: 0 0 5px #d1d1d1;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 1em;
+  }
+
+  #div2 .letra{
+    font-family: Pacifico;
+    font-size: 18px;
+  }
+
+  #chatroom{
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+    height: 98%;
+    background-color: #fff;
+    box-shadow: 0 0 5px #d1d1;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  #chatroom #mensajes{
+    flex: 1;
+    max-height: 90%;
+  }
+
+  #chatroom #salida{
+    display: flex;
+  }
+
+  #chatroom #salida .btn{
+    margin-left: 30px;
+  }
+
+  #chatroom #mensajes #m .nombre{
+    color: #0072c5;
+    font-weight: bold;
+  }
+
+  #chatroom #mensajes #m{
+    border-bottom: 1px solid #d1d1d1;
+  }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div id="div2">
+            <p class="letra">Si no ingresas tu nombre entraras como "Desconocido"</p>
+            <br>
+            <p class="letra">Nombre:</p>
+            <input type="text" id="nombre" class="form-control" placeholder="Nombre de usuario">
+            <br>
+            <button id="enviar_nombre" class="btn btn-success">ingresar</button>
+        </div>
+    </div>
+
+    <div id="chatroom">
+        <div id="mensajes">
+
+        </div>
+        <div id="salida">
+            <textarea id="msg" class="form-control" id="mensaje"></textarea>
+            <button id="boton_enviar" class="btn btn-primary">Enviar</button>
+        </div>
+    </div>
+</body>
+
+<script>
+  var nombre = "Desconocido";
+
+  var DATOS = [];
+
+  var MY_USER = null;
+
+            $(document).ready(function(){
+
+                firebase.database().ref('chat/').on('child_added', function(snapshot){
+                    var data = "<div id = 'm'><p class = 'nombre'>" + snapshot.child('nombre').val() + "</p><p class = 'mensaje'>" + snapshot.child('mensaje').val() + "</p></div>";
+
+                    $("#mensajes").html($("#mensajes").html() + data);
+                });
+
+                $("#enviar_nombre").on('click', function(){
+                  if($("#nombre").val() == ""){
+                    alert("Por favor inserte un nombre.");}
+                    else{
+                    nombre = $("#nombre").val();
+                    $("#div1").fadeOut();
+                    }
+
+                    firebase.database().ref('chat/' + Date.now()).set({
+                        nombre: "",
+                        mensaje: "<i>" + nombre + " Entro a la sala</i>"
+                    });
+                });
+
+                $("#boton_enviar").on('click', function(){
+                    var mess = $("#msg").val();
+
+                    firebase.database().ref('chat/' + Date.now()).set({
+                        nombre: nombre,
+                        mensaje: mess
+                    });
+
+                    $("#msg").val("");
+                });
+
+            });
+
+    usr = JSON.parse(usr);
+
+    MY_USER = usr;
+
+    eml = MY_USER.email.replace('.','_');
+    db_ref = firebase.database().ref("/Empresa/"+eml);
+
+    document.getElementById('MY_USER').innerHTML = usr.displayName;
+
+    db_ref.on('value', function(snapshot){
+      tmp = snapshot.val();
+      DATOS = [];
+
+      for(k in tmp){
+        tmp[k].key = k;
+        DATOS.push(tmp[k]);
+      }
+
+
+    })
+</script>
+</html>

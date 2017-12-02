@@ -9,13 +9,6 @@ namespace RedSocial.Models
     [Table("Usuario")]
     public partial class Usuario
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuario()
-        {
-            Amigos = new HashSet<Amigos>();
-            publicaciones = new HashSet<publicaciones>();
-        }
-
         [Key]
         public int idUsuario { get; set; }
 
@@ -39,11 +32,5 @@ namespace RedSocial.Models
 
         [StringLength(20)]
         public string URLfoto { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Amigos> Amigos { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<publicaciones> publicaciones { get; set; }
     }
 }

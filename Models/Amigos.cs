@@ -14,7 +14,5 @@ namespace RedSocial.Models
         public int? idUsuarioYO { get; set; }
 
         public int? idUsuario { get; set; }
-
-        public virtual Usuario Usuario { get; set; }
     }
 }
