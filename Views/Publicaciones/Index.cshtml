@@ -1,18 +1,71 @@
 ﻿@model IEnumerable<RedSocial.Models.publicaciones>
     
-
+@{ 
+    List<RedSocial.Models.megusta> MeGustas = ViewBag.MeGustas;
+    string resultado = "";
+    var usuarioId = int.Parse(Session["UsuarioID"].ToString());
+}
     @Html.Partial("Publicaciones")
 
 
-    @foreach (var item in Model)
-    {
-        <div class="jumbotron">
-            <h1>@item.Usuario.Nombre</h1>
-            @Html.Raw(HttpUtility.HtmlDecode(item.Descripcion))
-<<<<<<< HEAD
-            <p><a href="Index" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-=======
-            <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
->>>>>>> parent of f73c134... Me Gustas
-        </div>
+@foreach (var item in Model)
+{
+    item.MeGustas = MeGustas.Where(a => a.idPubli == item.idPubli).ToList();
+    <div class="jumbotron">
+        <h1>@item.Usuario.Nombre</h1>
+        @Html.Raw(HttpUtility.HtmlDecode(item.Descripcion))
+        <br />
+        <button class="btn btn-primary btn-round" id="megusta@(item.idPubli)" onclick="MeGusta(@item.idPubli, megusta@(item.idPubli))">
+            <i class="material-icons">favorite</i>
+            @if (item.MeGustas.Count > 0)
+            {
+                resultado = item.MeGustas.Where(a => a.idUsuario == usuarioId).FirstOrDefault().Estado == true ? "Ya no me gusta" : "Me Gusta";
+            }
+            else
+            {
+                resultado = "Me Gusta";
+            }
+            @resultado;
+
+            <div class="ripple-container"></div>
+        </button>
+        @if (item.MeGustas.Count > 0)
+        {
+            <button class="btn btn-simple btn-primary "><div class="ripple-container">@item.MeGustas.Count</div></button>
+        }
+    </div>
+}
+<script>
+    function MeGusta(publicacionId, idBoton) {
+        @*$.ajax({
+            type: 'GET',
+            url: '@Url.Action("MeGusta", "Publicaciones")',
+            data: { idPublicacion: publicacionId },
+            success: function (data, textStatus) {
+                // Handle success
+                console.log("data", data)
+                console.log("textStatus", textStatus)
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                // Handle error
+            }
+        });*@
+        var request = $.ajax({
+            url: "@Url.Action("MeGusta", "Publicaciones")",
+            method: "GET",
+            data: { idPublicacion: publicacionId },
+        });
+
+        request.done(function (response) {
+            if (response.Estatus == "OK")
+            {
+                var text = response.Message.Estado ? "Ya no me gusta" : "Me Gusta";
+                document.getElementById(idBoton.id).innerHTML = '<i class="material-icons">favorite</i> ' + text + ' <div class="ripple-container"></div>';
+            }
+        });
+
+        request.fail(function (jqXHR, textStatus) {
+            console.log("Request failed: " + textStatus);
+        });
     }
+</script>

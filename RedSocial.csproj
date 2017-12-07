@@ -189,13 +189,14 @@
     <Compile Include="Migrations\201712061625498_InitialCreate6.Designer.cs">
       <DependentUpon>201712061625498_InitialCreate6.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Migrations\201712070232433_initalCreate7.cs" />
-    <Compile Include="Migrations\201712070232433_initalCreate7.Designer.cs">
-      <DependentUpon>201712070232433_initalCreate7.cs</DependentUpon>
+    <Compile Include="Migrations\201712070318013_initalCreate8.cs" />
+    <Compile Include="Migrations\201712070318013_initalCreate8.Designer.cs">
+      <DependentUpon>201712070318013_initalCreate8.cs</DependentUpon>
     </Compile>
-=======
->>>>>>> parent of f73c134... Me Gustas
+    <Compile Include="Migrations\201712070430303_polgregory1.cs" />
+    <Compile Include="Migrations\201712070430303_polgregory1.Designer.cs">
+      <DependentUpon>201712070430303_polgregory1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Amigos.cs" />
     <Compile Include="Models\megusta.cs" />
@@ -500,7 +501,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -561,12 +564,12 @@
     <EmbeddedResource Include="Migrations\201712061625498_InitialCreate6.resx">
       <DependentUpon>201712061625498_InitialCreate6.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Migrations\201712070232433_initalCreate7.resx">
-      <DependentUpon>201712070232433_initalCreate7.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712070318013_initalCreate8.resx">
+      <DependentUpon>201712070318013_initalCreate8.cs</DependentUpon>
     </EmbeddedResource>
-=======
->>>>>>> parent of f73c134... Me Gustas
+    <EmbeddedResource Include="Migrations\201712070430303_polgregory1.resx">
+      <DependentUpon>201712070430303_polgregory1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
