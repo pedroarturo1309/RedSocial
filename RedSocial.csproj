@@ -173,6 +173,22 @@
     <Compile Include="Migrations\201712022024585_InitialCreate2.Designer.cs">
       <DependentUpon>201712022024585_InitialCreate2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712061619099_InitialCreate3.cs" />
+    <Compile Include="Migrations\201712061619099_InitialCreate3.Designer.cs">
+      <DependentUpon>201712061619099_InitialCreate3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061621543_InitialCreate4.cs" />
+    <Compile Include="Migrations\201712061621543_InitialCreate4.Designer.cs">
+      <DependentUpon>201712061621543_InitialCreate4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061623141_InitialCreate5.cs" />
+    <Compile Include="Migrations\201712061623141_InitialCreate5.Designer.cs">
+      <DependentUpon>201712061623141_InitialCreate5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061625498_InitialCreate6.cs" />
+    <Compile Include="Migrations\201712061625498_InitialCreate6.Designer.cs">
+      <DependentUpon>201712061625498_InitialCreate6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Amigos.cs" />
     <Compile Include="Models\megusta.cs" />
@@ -525,6 +541,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712022024585_InitialCreate2.resx">
       <DependentUpon>201712022024585_InitialCreate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061619099_InitialCreate3.resx">
+      <DependentUpon>201712061619099_InitialCreate3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061621543_InitialCreate4.resx">
+      <DependentUpon>201712061621543_InitialCreate4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061623141_InitialCreate5.resx">
+      <DependentUpon>201712061623141_InitialCreate5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061625498_InitialCreate6.resx">
+      <DependentUpon>201712061625498_InitialCreate6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -27,6 +27,36 @@ namespace RedSocial.Controllers
         {
             return View();
         }
+
+        public JsonResult MeGusta(int idPublicacion)
+        {
+
+            try
+            {
+                using (var db = new RedSocialDB())
+                {
+                    var usuarioId = int.Parse(Session["UsuarioID"].ToString());
+                    var ExisteMegusta = (from a in db.MeGusta
+                                         where a.idPubli == idPublicacion && a.idUsuario == usuarioId
+                                         select a).FirstOrDefault();
+
+                    if (ExisteMegusta == null)
+                    {
+                        ExisteMegusta = new megusta
+                        {
+                            Estado = true,
+                            FechaMegusta = DateTime.Now,
+                            idPubli = idPublicacion,
+                            idUsuario = usuarioId
+                        };
+                    }
+
+                }
+            }
+            catch { }
+            return Json("");
+
+        }
         
         [HttpPost, ValidateInput(false)]
         public ActionResult Publicaciones(publicaciones Publicaciones)

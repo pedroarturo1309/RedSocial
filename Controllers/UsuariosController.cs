@@ -19,12 +19,13 @@ namespace RedSocial.Controllers
         }
 
         //GET: CREAR USUARIO
+        [AllowAnonymous]
         public ActionResult CrearUsuario()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, AllowAnonymous]
         public ActionResult CrearUsuario(Usuario usuario)
         {
             try
