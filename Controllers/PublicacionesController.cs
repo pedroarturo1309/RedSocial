@@ -10,22 +10,13 @@ namespace RedSocial.Controllers
 {
     public class PublicacionesController : Controller
     {
-        private RedSocialDB db = new RedSocialDB();
         // GET: Publicaciones
         public ActionResult Index()
         {
             using (var db = new RedSocialDB())
             {
-               
-                var megustas = (from b in db.MeGusta
-                                where b.Estado == true
-                                select b).Include(c=> c.publicaciones).ToList();
-
                 var publicaciones = (from a in db.publicaciones
-                                     select a).Include(a => a.Usuario).ToList();
-
-
-                ViewBag.MeGustas = megustas;
+                                     select a).Include(a=>a.Usuario).ToList();
 
                 return View(publicaciones);     
             }
@@ -37,11 +28,13 @@ namespace RedSocial.Controllers
             return View();
         }
 
-        [HttpGet]
         public JsonResult MeGusta(int idPublicacion)
         {
+
             try
             {
+                using (var db = new RedSocialDB())
+                {
                     var usuarioId = int.Parse(Session["UsuarioID"].ToString());
                     var ExisteMegusta = (from a in db.MeGusta
                                          where a.idPubli == idPublicacion && a.idUsuario == usuarioId
@@ -56,21 +49,12 @@ namespace RedSocial.Controllers
                             idPubli = idPublicacion,
                             idUsuario = usuarioId
                         };
-
-                        db.MeGusta.Add(ExisteMegusta);
-                    }
-                    else
-                    {
-                        ExisteMegusta.Estado = (ExisteMegusta.Estado) == true ? false : true;
-                        ExisteMegusta.FechaMegusta = DateTime.Now;
                     }
 
-                    db.SaveChanges();
-                    return Json(new { Estatus = "OK", Message = ExisteMegusta }, JsonRequestBehavior.AllowGet);
+                }
             }
-            catch {
-                return Json(new { Estatus = "ERROR"}, JsonRequestBehavior.AllowGet);
-            }
+            catch { }
+            return Json("");
 
         }
         
@@ -97,16 +81,6 @@ namespace RedSocial.Controllers
                 ViewBag.guardado = false;
                 return RedirectToAction("Index", "Publicaciones");
             }
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-                //dbu.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

@@ -13,6 +13,5 @@ namespace RedSocial.Models
         public bool Estado { get; set; }
         public DateTime FechaMegusta { get; set; }
         public virtual Usuario Usuario { get; set; }
-        public virtual publicaciones publicaciones { get; set; }
     }
 }

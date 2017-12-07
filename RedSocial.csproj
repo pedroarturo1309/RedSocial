@@ -189,10 +189,13 @@
     <Compile Include="Migrations\201712061625498_InitialCreate6.Designer.cs">
       <DependentUpon>201712061625498_InitialCreate6.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Migrations\201712070232433_initalCreate7.cs" />
     <Compile Include="Migrations\201712070232433_initalCreate7.Designer.cs">
       <DependentUpon>201712070232433_initalCreate7.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> parent of f73c134... Me Gustas
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Amigos.cs" />
     <Compile Include="Models\megusta.cs" />
@@ -558,9 +561,12 @@
     <EmbeddedResource Include="Migrations\201712061625498_InitialCreate6.resx">
       <DependentUpon>201712061625498_InitialCreate6.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201712070232433_initalCreate7.resx">
       <DependentUpon>201712070232433_initalCreate7.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> parent of f73c134... Me Gustas
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

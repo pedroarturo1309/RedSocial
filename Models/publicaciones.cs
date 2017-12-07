@@ -16,8 +16,5 @@ namespace RedSocial.Models
         public string Descripcion { get; set; }
 
         public virtual Usuario Usuario { get; set; }
-
-        [NotMapped]
-        public List<megusta> MeGustas { get; set; }
     }
 }
