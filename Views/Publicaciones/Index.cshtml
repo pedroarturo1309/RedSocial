@@ -19,7 +19,15 @@
             <i class="material-icons">favorite</i>
             @if (item.MeGustas.Count > 0)
             {
-                resultado = item.MeGustas.Where(a => a.idUsuario == usuarioId).FirstOrDefault().Estado == true ? "Ya no me gusta" : "Me Gusta";
+                var result = item.MeGustas.Where(a => a.idUsuario == usuarioId).FirstOrDefault();
+                if(result != null)
+                {
+                    resultado = result.Estado == true ? "Ya no me gusta" : "Me Gusta";
+                }
+                else
+                {
+                    resultado = "Me Gusta";
+                }
             }
             else
             {
