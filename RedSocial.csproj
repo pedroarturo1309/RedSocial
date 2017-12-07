@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201712061625498_InitialCreate6.Designer.cs">
       <DependentUpon>201712061625498_InitialCreate6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712070232433_initalCreate7.cs" />
+    <Compile Include="Migrations\201712070232433_initalCreate7.Designer.cs">
+      <DependentUpon>201712070232433_initalCreate7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Amigos.cs" />
     <Compile Include="Models\megusta.cs" />
@@ -553,6 +557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712061625498_InitialCreate6.resx">
       <DependentUpon>201712061625498_InitialCreate6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712070232433_initalCreate7.resx">
+      <DependentUpon>201712070232433_initalCreate7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

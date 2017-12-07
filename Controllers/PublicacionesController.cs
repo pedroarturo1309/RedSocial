@@ -74,12 +74,12 @@ namespace RedSocial.Controllers
                     }
                 }
                 ViewBag.guardado = true;
-                return View("Index");
+                return RedirectToAction("Index", "Publicaciones");
             }
             catch (Exception e)
             {
                 ViewBag.guardado = false;
-                return View("index");
+                return RedirectToAction("Index", "Publicaciones");
             }
         }
     }

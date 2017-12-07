@@ -52,7 +52,7 @@ namespace RedSocial.Controllers
                     }
                 }
                 ViewBag.guardado = true;
-                return View(usuario);
+                return RedirectToAction("Index", "Login");
             }
             catch(Exception e)
             {

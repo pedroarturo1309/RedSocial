@@ -12,7 +12,7 @@ namespace RedSocial.Models
         [Key]
         public int idUsuario { get; set; }
 
-        [StringLength(25)]
+        [StringLength(50)]
         public string Correo { get; set; }
 
         [StringLength(25)]
